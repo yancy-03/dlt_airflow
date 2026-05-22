@@ -13,7 +13,7 @@ import pandas as pd
     }
 )
 def load_user_data():
-    df = pd.read_csv("./data/user_data.csv")   
+    df = pd.read_csv("/home/yancy/airflow/dags/data/user_data.csv")     
     yield from df.to_dict("records")
 
 @dlt.source(
@@ -31,7 +31,7 @@ def run():
     pipeline = dlt.pipeline(
         pipeline_name="user_pipeline_scd2",
         destination="sqlalchemy",
-        dataset_name="employee_database_scd2",
+        dataset_name="employee_scd2",
         dev_mode=False,
         progress="log"
     )
